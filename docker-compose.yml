@@ -1,0 +1,44 @@
+version: "3.9"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    volumes:
+      - .:/code
+      - media_volume:/code/media
+      - static_volume:/code/static
+    expose:
+      - 8000
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - DEBUG=0
+      - SECRET_KEY=foo
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_USER=postgres
+      - SQL_PASSWORD=postgres
+      - SQL_HOST=db
+      - SQL_PORT=5432
+    depends_on:
+      - db
+  nginx:
+    build: ./nginx
+    volumes:
+      - media_volume:/code/media
+      - static_volume:/code/static
+    ports:
+     - 8000:80
+    depends_on:
+     - web
+volumes:
+  media_volume:
+  static_volume:
