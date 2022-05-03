@@ -22,7 +22,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - DEBUG=0
-      - SECRET_KEY=foo
+      - SECRET_KEY=oof
       - SQL_ENGINE=django.db.backends.postgresql
       - SQL_USER=postgres
       - SQL_PASSWORD=postgres
