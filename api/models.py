@@ -43,8 +43,7 @@ class Product(models.Model):
         return self.name
     
     def validate_unique(self, *args, **kwargs):
-        if self.sku:
-            if self.__class__.objects.filter(sku=self.sku).exists():
+        if self.sku and self.__class__.objects.filter(sku=self.sku).exists():
                 raise ValidationError(
                     message='Invalid sku: This sku value already exists', 
                     code='invalid', 
