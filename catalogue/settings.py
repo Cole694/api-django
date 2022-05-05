@@ -150,18 +150,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # _______________________________________________________________________
-
-# auth0 settings
-"""
-SOCIAL_AUTH_TRAILING_SLASH = False # removes trailing slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-ec7a9tlw.us.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = 'l8tlSoCB2vZglcfcAzyOpKjIFuemamC3'
-SOCIAL_AUTH_AUTH0_SECRET = 'LDS-4kLH4LJBinlZOCdCVVougX4Rdly5DAFPBEXX8wnjt7-PUJdconIZ12n8-Cpu'
-SOCIAL_AUTH_AUTH0_SCOPE = [
-    'openid',
-    'profile',
-    'email'
-]"""
+# auth settings
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
