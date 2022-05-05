@@ -10,7 +10,7 @@
   source env/bin/activate
   ```
 - Install requirements form requirements.txt
-- ```bash
+  ```bash
   pip3 install -r requirements.txt
   ```
 - Bash into the api_django_web container and run migrations.
@@ -18,7 +18,7 @@
   docker exec -it containerid bash
   ```
 - Run the migrations.
-- ```bash
+  ```bash
   python manage.py migrate
   ```
 - Finally run the docker-compose file to spin up.
