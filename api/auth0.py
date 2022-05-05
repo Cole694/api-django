@@ -2,6 +2,7 @@ from urllib import request
 from jose import jwt
 from social_core.backends.oauth import BaseOAuth2
 
+url_prefix = 'http://'
 
 class Auth0(BaseOAuth2):
     """Auth0 OAuth authentication backend"""
@@ -13,12 +14,12 @@ class Auth0(BaseOAuth2):
         ('picture', 'picture'),
         ('email', 'email')
     ]
-
+    
     def authorization_url(self):
-        return 'https://' + self.setting('DOMAIN') + '/authorize'
+        return url_prefix + self.setting('DOMAIN') + '/authorize'
 
     def access_token_url(self):
-        return 'https://' + self.setting('DOMAIN') + '/oauth/token'
+        return url_prefix + self.setting('DOMAIN') + '/oauth/token'
 
     def get_user_id(self, details, response):
         """Return current user id."""
