@@ -2,7 +2,7 @@ from urllib import request
 from jose import jwt
 from social_core.backends.oauth import BaseOAuth2
 
-url_prefix = 'http://'
+url_prefix = 'https://'
 
 class Auth0(BaseOAuth2):
     """Auth0 OAuth authentication backend"""

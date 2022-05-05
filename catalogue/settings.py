@@ -172,7 +172,7 @@ JWT_AUTH = {
         'api.utils.jwt_decode_token',
     'JWT_ALGORITHM': 'RS256',
     'JWT_AUDIENCE': 'https://test_api/api',
-    'JWT_ISSUER': 'http://dev-ec7a9tlw.us.auth0.com/',
+    'JWT_ISSUER': 'https://dev-ec7a9tlw.us.auth0.com/',
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
 
