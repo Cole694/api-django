@@ -45,7 +45,7 @@ class TestProduct(TestCase):
 
     def test_should_check_default_field_values_match_generated_field_values_when_crating_object(self):
         test_prod = Product.objects.create(name='item_name', product_description='description', 
-            price=10.50, department='general', date_listed=datetime.now().replace(microsecond=0, second=0), 
+            price=10.50, department='general', date_listed=datetime.now().replace(microsecond=0, second=0, minute=0), 
             product_weight=0.1, product_height=1 ,product_width=1 ,product_length=1 ,
             product_image='image/default.jpg', product_rating=1)
         test_prod2 = Product.objects.create()
@@ -89,7 +89,7 @@ class TestCatalogue(TestCase):
         self.assertIsInstance(self.test_catalogue.description, str)
 
     def test_should_check_catalogue_has_product(self):
-        products = [Product.objects.create() for p in range(3)]
+        products = [Product.objects.create() for _ in range(3)]
         for item in products:
             item.catalogue.add(self.test_catalogue)
         
