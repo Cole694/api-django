@@ -7,8 +7,6 @@ from api.models import Catalogue, Product
 from api.serializers import CatalogueSerializer, ProductSerializer
 from rest_framework import permissions
 
-# Create your views here.
-
 class CatalogueViewSet(viewsets.ModelViewSet):
     queryset = Catalogue.objects.all()
     serializer_class = CatalogueSerializer
