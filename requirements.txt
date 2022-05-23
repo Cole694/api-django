@@ -1,0 +1,18 @@
+django == 4.0.3
+gunicorn
+gevent
+markdown
+pygments
+django-filter
+python-jose
+social-auth-app-django
+cryptography
+django-cors-headers
+drf-jwt
+pyjwt
+requests
+djangorestframework
+Pillow
+psycopg2-binary
+pytest
+coverage
