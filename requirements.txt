@@ -14,3 +14,5 @@ requests
 djangorestframework
 Pillow
 psycopg2-binary
+pytest
+coverage
