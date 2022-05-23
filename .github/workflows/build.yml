@@ -19,12 +19,6 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install packages
         run: pip install -r requirements.txt
-      - name: Export posgres
-        run: export POSTGRES_NAME=postgres
-      - name: Export test settings
-        run: export DJANGO_SETTINGS_MODULE=catalogue.test
-      - name: Run postgres
-        run: docker-compose up -d db
       - name: Run tests
         run: python manage.py test
       - name: SonarCloud Scan
