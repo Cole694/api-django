@@ -23,6 +23,8 @@ jobs:
         run: export POSTGRES_NAME=postgres
       - name: Export settings
         run: export DJANGO_SETTINGS_MODULE=catalogue.test
+      - name: DB up
+        run: docker-compose up -d db
       - name: Run tests
         run: python manage.py test
       - name: SonarCloud Scan
