@@ -6,6 +6,20 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+  db_container:
+    runs_on: ubuntu-latest
+    container: ubuntu
+    services:
+      db: 
+        image: postgres
+        env:
+          POSTGRES_DB=postgres
+          POSTGRES_USER=postgres
+          POSTGRES_PASSWORD=postgres
+    steps:
+      - name: DB up
+        run: docker-compose up -d db
+        
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
@@ -21,6 +35,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests
         run: coverage run --source="." manage.py test
+        env: 
+          DJANGO_SETTINGS_MODULE: catalogue.test
       - name: Run coverage file
         run: coverage xml 
       - name: SonarCloud Scan
