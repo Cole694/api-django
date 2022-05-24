@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   db_container:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     container: ubuntu
     services:
       db: 
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: DB up
         run: docker-compose up -d db
-        
+
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
