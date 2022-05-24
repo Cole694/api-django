@@ -19,15 +19,9 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install packages
         run: pip install -r requirements.txt
-      - name: Export db
-        run: export POSTGRES_NAME=postgres
-      - name: Export settings
-        run: export DJANGO_SETTINGS_MODULE=catalogue.test
-      - name: DB up
-        run: docker-compose up -d db
       - name: Run tests
         run: coverage run --source="." manage.py test
-      - name: Run coverage
+      - name: Run coverage file
         run: coverage xml 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
