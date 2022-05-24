@@ -37,6 +37,7 @@ jobs:
         run: coverage run --source="." manage.py test
         env: 
           DJANGO_SETTINGS_MODULE: catalogue.test
+          POSTGRES_NAME: postgres
       - name: Run coverage file
         run: coverage xml 
       - name: SonarCloud Scan
