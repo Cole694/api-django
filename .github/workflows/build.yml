@@ -20,9 +20,9 @@ jobs:
       - name: Install packages
         run: pip install -r requirements.txt
       - name: Run tests
-        run: python manage.py test
+        run: coverage run --source="." manage.py test
       - name: Run coverage
-        run: coverage run -m pytest 
+        run: coverage xml 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
