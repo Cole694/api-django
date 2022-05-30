@@ -8,7 +8,6 @@ from api.models import Product, Catalogue
 from django.contrib.auth.models import User
 from rest_framework import status
 from django.urls import reverse
-from api.auth0 import Auth0
 from rest_framework_jwt import utils
 from rest_framework_jwt.settings import api_settings
 from api.utils import jwt_decode_token, jwt_get_username_from_payload_handler
