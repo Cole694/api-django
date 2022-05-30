@@ -33,17 +33,7 @@ class TestUtils(APITestCase):
         
 
     def test_should_check_jwt_decode_token(self):# try include uuid with refactor
-
-        headers = {"typ": "JWT", "alg": "RS256", "kid":"JhutschiIutrvjGrgx"}
-        payload = {"sub": "127853487354", "name": "test"}
-
-        private_key = open('.ssh/id_rsa', 'r').read()
-        
-        key = serialization.load_ssh_private_key(private_key.encode(), password=b'')
-
-        token = jwt.encode(payload=payload, key=key, algorithm='RS256', headers=headers)
-        #print(token, '\n')
-        util_func = jwt_decode_token(token)
+        pass
         
 
 class TestAuth0(APITestCase):
