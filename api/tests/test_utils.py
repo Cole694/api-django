@@ -17,8 +17,6 @@ import requests
 
 class TestUtils(APITestCase):
 
-    list_url = list_url = reverse('products-list')
-
     def setUp(self):
         self.client = APIClient()
         self.user = User.objects.create_user('test', 'test@test.com', 'abc123')
