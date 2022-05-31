@@ -16,3 +16,4 @@ Pillow
 psycopg2-binary
 pytest
 coverage
+responses
