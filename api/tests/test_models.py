@@ -83,6 +83,7 @@ class TestProduct(TestCase):
 
             Product.validate_unique(self.test_prod, self.test_prod2)
 
+
 class TestCatalogue(TestCase):
 
     @classmethod
