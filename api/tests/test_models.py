@@ -78,11 +78,6 @@ class TestProduct(TestCase):
                 product_rating=3)
             test_prod.full_clean()
 
-    def test_should_check_sku_vallidation_err_raises(self):
-        with self.assertRaises(ValidationError):
-            func = Product.validate_unique(self.test_prod, self.test_prod2)
-
-
 class TestCatalogue(TestCase):
 
     @classmethod
