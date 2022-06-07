@@ -1,18 +1,10 @@
-from base64 import decode
-from email import header
-from wsgiref import headers
+from datetime import datetime
 from rest_framework.test import APITestCase, APIClient, force_authenticate
 from django.contrib.auth.models import User
-from rest_framework import status
-from rest_framework_jwt import utils
-from rest_framework_jwt.settings import api_settings
 from api.utils import jwt_decode_token, jwt_get_username_from_payload_handler
-import jwt
-from cryptography.hazmat.primitives import serialization
-import http.client
 import json
 import responses
-import requests
+from freezegun import freeze_time
 
 class TestUtils(APITestCase):
 
@@ -28,6 +20,8 @@ class TestUtils(APITestCase):
 
     @responses.activate
     def test_should_check_jwt_decode_token(self):
+        freezer = freeze_time('2022-06-06')
+        freezer.start()
         
         claim = {'iss': 'https://dev-ec7a9tlw.us.auth0.com/', 'sub': 'KWwVnoYEFoAQkrYmNDvdu7eXUEJ0h2Ub@clients', 'aud': 'https://test_api/api', 'iat': 1654511304, 'exp': 1654597704, 'azp': 'KWwVnoYEFoAQkrYmNDvdu7eXUEJ0h2Ub', 'gty': 'client-credentials'}
         token_details = '{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilk5UUpFWFhuMWpoeDZ2cXl5WTZIMyJ9.eyJpc3MiOiJodHRwczovL2Rldi1lYzdhOXRsdy51cy5hdXRoMC5jb20vIiwic3ViIjoiS1d3Vm5vWUVGb0FRa3JZbU5EdmR1N2VYVUVKMGgyVWJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vdGVzdF9hcGkvYXBpIiwiaWF0IjoxNjU0NTExMzA0LCJleHAiOjE2NTQ1OTc3MDQsImF6cCI6IktXd1Zub1lFRm9BUWtyWW1ORHZkdTdlWFVFSjBoMlViIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.Xod5ZdVvqkX1DeJa044R_ABiF769JYW_pxzyE82arqJCrxdFoxuxb3Mfin1ceAFuhQtd1dyqAjNpP0c5xrAH4CT0IoYSX9wz7PKjHcYxYsQPyh7ljahLyfVqDexLpiCYNScCUAGv-UYo56B8D4TySQE9WCT1EobbeyU7Cpr-ReqQd9qoe3E4lCDEgy4mscdCeHF1coMjavE6mTd4si4eEjvXuial8nGySpwL4Pcczk_sBzbu_K07d-qX8FwzBB5nRx0s9DR0kU2I-nbHNx5q4RWF-x0Lj0kweh29adLzVJTZov7LR-lq_FQYcAChOSRgIYUFyv5dP0olDp0s9hKlPA","expires_in":"86400","token_type":"Bearer"}'
@@ -45,3 +39,4 @@ class TestUtils(APITestCase):
 
         func = jwt_decode_token(token)
         self.assertEqual(func, claim) 
+        freezer.stop()
