@@ -39,11 +39,9 @@ class TestUtils(APITestCase):
             status = 200,
             content_type = 'application/json'
             )
-
-        resp = requests.get('https://dev-ec7a9tlw.us.auth0.com/.well-known/jwks.json')
+        
         token_dict = json.loads(token_details)
         token = token_dict['access_token']
 
         func = jwt_decode_token(token)
-        self.assertEqual(func, claim)
-        # print(func) 
+        self.assertEqual(func, claim) 
