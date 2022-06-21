@@ -29,27 +29,14 @@ jobs:
           port: ${{ secrets.DIGITALOCEAN_PORT }}
 
       - name: change
-        run: cd ../
-        
-      - name: change dir
         run: |
-          ll
+          cd ../
           cd home/cole/
-        
-      - name: clone
-        run: git clone https://github.com/Cole694/api-django
-        
-      - name: change dir
-        run: cd api-django/
-        
-      - name: make venv
-        run: python3 -m venv env
-            
-      - name: activate venv
-        run: source env/bin/activate
-            
-      - name: docker compose
-        run: docker-compose up -d
+          git clone https://github.com/Cole694/api-django
+          cd api-django/
+          python3 -m venv env
+          source env/bin/activate
+          docker-compose up -d
             
       - name: bash into
         run: docker exec -it api-django_web_1 bash
