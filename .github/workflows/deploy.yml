@@ -27,16 +27,14 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.DIGITALOCEAN_PORT }}
-
-      - name: change
-        run: |
-          cd ../
-          cd home/cole/
-          git clone https://github.com/Cole694/api-django
-          cd api-django/
-          python3 -m venv env
-          source env/bin/activate
-          docker-compose up -d
+          script: |
+            cd ../
+            cd home/cole/
+            git clone https://github.com/Cole694/api-django
+            cd api-django/
+            python3 -m venv env
+            source env/bin/activate
+            docker-compose up -d
             
       - name: bash into
         run: docker exec -it api-django_web_1 bash
