@@ -32,7 +32,9 @@ jobs:
         run: cd ../
         
       - name: change dir
-        run: cd home/cole/
+        run: |
+          ll
+          cd home/cole/
         
       - name: clone
         run: git clone https://github.com/Cole694/api-django
