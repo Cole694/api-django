@@ -36,7 +36,7 @@ jobs:
             source env/bin/activate
             docker-compose up -d
       
-      - uses: docker://api-django_web_1
+      - uses: api-django_web_1
       - name: Migrations
         run: python manage.py migrate
           
