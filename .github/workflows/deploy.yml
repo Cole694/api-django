@@ -35,9 +35,5 @@ jobs:
             python3 -m venv env
             source env/bin/activate
             docker-compose up -d
-      - name: Run migrations
-        uses: docker://api-django_web_1
-        with:
-          entrypoit: |
-              python manage.py migrate
+      
         
