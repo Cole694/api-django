@@ -35,6 +35,7 @@ class Product(models.Model):
     product_length = models.FloatField(validators=[MinValueValidator(0)], default=1.0)
     product_image = models.ImageField(upload_to='images/', default='image/default.jpg')
     product_rating = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=1)
+    product_nickname = models.CharField(max_length=10, default='nickname')
     
     class Meta:
         ordering = ['name']
