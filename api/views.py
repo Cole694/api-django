@@ -17,5 +17,4 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     template_name = 'product.html'
     permissions_classes = [permissions.IsAuthenticated]
-
-    
+# added this to test ssh with github
